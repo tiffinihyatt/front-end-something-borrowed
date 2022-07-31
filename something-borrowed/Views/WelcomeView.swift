@@ -15,8 +15,19 @@ struct WelcomeView: View {
                     .resizable()
                     .scaledToFit()
                 
-                Text("Shop Now >")
-                    .padding()
+                Button(action: {
+                            print("Clicked log in button")
+                        }){
+                            Text("LOG IN / SIGN UP")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                        //The actual styling
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 25)
+                                .fill(Color.teal)
+                        )
             }
             .multilineTextAlignment(.center)
             .padding()
