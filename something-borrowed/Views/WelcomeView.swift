@@ -10,27 +10,28 @@ import SwiftUI
 struct WelcomeView: View {
     var body: some View {
         VStack {
-            VStack(spacing: 20) {
-                Image("something-borrowed-logo")
+            HStack {
+                Image("app logo")
                     .resizable()
-                    .scaledToFit()
-                
-                Button(action: {
-                            print("Clicked log in button")
-                        }){
-                            Text("LOG IN / SIGN UP")
-                                .foregroundColor(.white)
-                                .bold()
-                        }
-                        //The actual styling
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color.teal)
-                        )
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height:45)
+                Text("something borrowed")
+                    .font(.title)
+                    .frame(width: 250)
             }
-            .multilineTextAlignment(.center)
+            
+            Button(action: {
+                print("Clicked log in button")
+            }) {
+                Text("LOG IN / SIGN UP")
+                    .foregroundColor(.white)
+                    .bold()
+            }
             .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color.pink)
+            )
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
