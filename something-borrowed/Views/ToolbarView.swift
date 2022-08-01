@@ -14,11 +14,13 @@ struct ToolbarView: View {
             WelcomeView()
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
+                        Spacer()
+                        
                         Button {
                             print("Pressed home")
                         } label: {
                             VStack {
-                                Image("app logo")
+                                Image("ring logo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height:45)
@@ -26,32 +28,50 @@ struct ToolbarView: View {
                             }
                         }
                         
-                        Spacer()
+//                        Spacer()
                         
-                        Button("Browse") {
+                        Button {
                             print("Pressed browse")
+                        } label: {
+                            VStack {
+                                Image("sparkle logo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height:45)
+                                Text("Browse")
+                            }
                         }
                         
-                        Spacer()
+//                        Spacer()
                         
                         Button {
                             print("Pressed list an item")
                         } label: {
                             VStack {
-                                Image(systemName: "plus.app")
+                                Image("hanger logo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(height:30)
+                                    .frame(height:45)
                                     .foregroundColor(.black)
                                 Text("List an Item")
                             }
                         }
                         
-                        Spacer()
+//                        Spacer()
                         
-                        Button("Shopping Bag") {
+                        Button {
                             print("Pressed shopping bag")
+                        } label: {
+                            VStack {
+                                Image("shopping-bag")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height:45)
+                                Text("Bag")
+                            }
                         }
+                        
+                        Spacer()
                     }
                 }
         }

@@ -11,7 +11,7 @@ struct WelcomeView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("app logo")
+                Image("ring logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height:45)
