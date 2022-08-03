@@ -10,21 +10,29 @@ import SwiftUI
 struct NewGarmentView: View {
     @State private var title: String = ""
     @State private var brand: String = ""
-//    street size
-//    label size
+    @State private var streetSize: Int = 0
+    @State private var labelSize: Int = 0
     @State private var color: String = ""
     @State private var condition: String = ""
-//    price
+    @State private var price: Int = 0
     @State private var description: String = ""
+    
+    let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
     
     var body: some View {
         
 //        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         
         VStack {
-            List {
+            Form {
                 TextField("Item Name", text: $title)
                 TextField("Brand", text: $brand)
+                Picker("Street Size", selection: $streetSize) {
+                    Text("0").tag(0)
+                    Text("2").tag(2)
+                    Text("4").tag(4)
+                }
+                .pickerStyle(.menu)
                 TextField("Color", text: $color)
                 TextField("Condition", text: $condition)
                 TextField("Description", text: $description)
