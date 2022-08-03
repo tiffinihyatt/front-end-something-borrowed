@@ -14,6 +14,8 @@
 		F950CF282894608400B73A65 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F950CF272894608400B73A65 /* WelcomeView.swift */; };
 		F9C22C1C289634C900DFB3FC /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C22C1B289634C900DFB3FC /* ToolbarView.swift */; };
 		F9C8BE44289A0F650006B4E1 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BE43289A0F650006B4E1 /* BrowseView.swift */; };
+		F9C8BE46289A17570006B4E1 /* NewGarmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */; };
+		F9C8BE48289A18280006B4E1 /* Garment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BE47289A18280006B4E1 /* Garment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		F950CF272894608400B73A65 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		F9C22C1B289634C900DFB3FC /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		F9C8BE43289A0F650006B4E1 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentView.swift; sourceTree = "<group>"; };
+		F9C8BE47289A18280006B4E1 /* Garment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Garment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				F9C22C1B289634C900DFB3FC /* ToolbarView.swift */,
 				F950CF272894608400B73A65 /* WelcomeView.swift */,
 				F9C8BE43289A0F650006B4E1 /* BrowseView.swift */,
+				F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */,
+				F9C8BE47289A18280006B4E1 /* Garment.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,7 +163,9 @@
 				F950CF1B2894310B00B73A65 /* ContentView.swift in Sources */,
 				F950CF282894608400B73A65 /* WelcomeView.swift in Sources */,
 				F9C8BE44289A0F650006B4E1 /* BrowseView.swift in Sources */,
+				F9C8BE48289A18280006B4E1 /* Garment.swift in Sources */,
 				F9C22C1C289634C900DFB3FC /* ToolbarView.swift in Sources */,
+				F9C8BE46289A17570006B4E1 /* NewGarmentView.swift in Sources */,
 				F950CF192894310B00B73A65 /* something_borrowedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
