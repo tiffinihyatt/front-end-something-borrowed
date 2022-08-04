@@ -39,8 +39,6 @@ struct AddImageView: View {
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $inputImage)
             }
-            
-//            NewGarmentView()
         }
     }
     
