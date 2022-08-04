@@ -25,17 +25,30 @@ struct NewGarmentView: View {
         
         VStack {
             Form {
-                TextField("Item Name", text: $title)
-                TextField("Brand", text: $brand)
-                Picker("Street Size", selection: $streetSize) {
-                    Text("0").tag(0)
-                    Text("2").tag(2)
-                    Text("4").tag(4)
+                Section("Basic Information") {
+                    TextField("Item Name", text: $title)
+                    TextField("Brand", text: $brand)
+                    TextField("Color", text: $color)
+                    TextField("Condition", text: $condition)
                 }
-                .pickerStyle(.menu)
-                TextField("Color", text: $color)
-                TextField("Condition", text: $condition)
-                TextField("Description", text: $description)
+                
+                Section("Sizing") {
+                    Picker("Street Size", selection: $streetSize) {
+                        Text("0").tag(0)
+                        Text("2").tag(2)
+                        Text("4").tag(4)
+                    }
+                    
+                    Picker("Label Size", selection: $labelSize) {
+                        Text("0").tag(0)
+                        Text("2").tag(2)
+                        Text("4").tag(4)
+                    }
+                }
+                
+                Section("Item Description") {
+                    TextField("Description", text: $description)
+                }
             }
         }
     }

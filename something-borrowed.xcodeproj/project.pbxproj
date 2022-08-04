@@ -63,6 +63,8 @@
 		F950CF172894310B00B73A65 /* something-borrowed */ = {
 			isa = PBXGroup;
 			children = (
+				F95CFA55289B6CC3002AB219 /* Managers */,
+				F95CFA54289B6CB5002AB219 /* Components */,
 				F950CF182894310B00B73A65 /* something_borrowedApp.swift */,
 				F950CF1C2894310F00B73A65 /* Assets.xcassets */,
 				F950CF262894600400B73A65 /* Views */,
@@ -87,10 +89,24 @@
 				F950CF272894608400B73A65 /* WelcomeView.swift */,
 				F9C8BE43289A0F650006B4E1 /* BrowseView.swift */,
 				F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */,
-				F9C8BE47289A18280006B4E1 /* Garment.swift */,
 				F953C67D289B681B0004F723 /* ShoppingBagView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F95CFA54289B6CB5002AB219 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F9C8BE47289A18280006B4E1 /* Garment.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F95CFA55289B6CC3002AB219 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
