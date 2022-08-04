@@ -20,6 +20,8 @@ struct ToolbarView: View {
                     BrowseView()
                 case .third:
                     NewGarmentView()
+                case .fourth:
+                    ShoppingBagView()
                 }
             }
             
@@ -31,24 +33,24 @@ struct ToolbarView: View {
                             Image("ring logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height:45)
+                                .frame(height:40)
                             Text("Home")
                         }
                     })
                 
-//                Spacer()
+                Spacer()
                 
                 Button(action: { selectedPage = .second }, label: {
                         VStack {
                             Image("sparkle logo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(height:45)
+                                .frame(height:40)
                             Text("Browse")
                         }
                     })
                 
-//                Spacer()
+                Spacer()
                 
                 Button(action: { selectedPage = .third }, label: {
                         VStack {
@@ -60,82 +62,26 @@ struct ToolbarView: View {
                             Text("List an Item")
                         }
                     })
+                
+                Spacer()
+                
+                Button(action: { selectedPage = .fourth}, label: {
+                        VStack {
+                            Image("shopping-bag")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height:40)
+                            Text("Bag")
+                        }
+                    })
             }.padding(.horizontal, 30)
         }
     }
 }
 
 enum SelectedPage {
-    case first, second, third
+    case first, second, third, fourth
 }
-        
-//        NavigationView {
-//            WelcomeView()
-//                .toolbar {
-//                    ToolbarItemGroup(placement: .bottomBar) {
-//                        Spacer()
-//
-//                        Button {
-//                            print("Pressed home")
-//                        } label: {
-//                            VStack {
-//                                Image("ring logo")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(height:45)
-//                                Text("Home")
-//                            }
-//                        }
-//
-////                        Spacer()
-//
-//                        Button {
-//                            print("Pressed browse")
-//                        } label: {
-//                            VStack {
-//                                Image("sparkle logo")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(height:45)
-//                                Text("Browse")
-//                            }
-//                        }
-//
-////                        Spacer()
-//
-//                        Button {
-//                            print("Pressed list an item")
-//                        } label: {
-//                            VStack {
-//                                Image("hanger logo")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(height:45)
-//                                    .foregroundColor(.black)
-//                                Text("List an Item")
-//                            }
-//                        }
-//
-////                        Spacer()
-//
-//                        Button {
-//                            print("Pressed shopping bag")
-//                        } label: {
-//                            VStack {
-//                                Image("shopping-bag")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .frame(height:45)
-//                                Text("Bag")
-//                            }
-//                        }
-//
-//                        Spacer()
-//                    }
-//                }
-//        }
-//    }
-//}
 
 struct ToolbarView_Previews: PreviewProvider {
     static var previews: some View {
