@@ -17,6 +17,7 @@ struct AddImageView: View {
             ZStack {
                 Rectangle()
                     .fill(.secondary)
+                    .frame(width: 300, height: 200)
                 
                 HStack {
                     Image(systemName: "photo.on.rectangle.angled")
@@ -39,7 +40,7 @@ struct AddImageView: View {
                 ImagePicker(image: $inputImage)
             }
             
-            NewGarmentView()
+//            NewGarmentView()
         }
     }
     

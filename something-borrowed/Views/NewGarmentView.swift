@@ -21,10 +21,10 @@ struct NewGarmentView: View {
     
     var body: some View {
         
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
         VStack {
             Form {
+                AddImageView()
+                
                 Section("Basic Information") {
                     TextField("Item Name", text: $title)
                     TextField("Brand", text: $brand)
@@ -35,14 +35,14 @@ struct NewGarmentView: View {
                 Section("Sizing") {
                     Picker("Street Size", selection: $streetSize) {
                         Text("0").tag(0)
-                        Text("2").tag(2)
-                        Text("4").tag(4)
+                        Text("2").tag(1)
+                        Text("4").tag(2)
                     }
                     
                     Picker("Label Size", selection: $labelSize) {
-                        Text("0").tag(0)
-                        Text("2").tag(2)
-                        Text("4").tag(4)
+                        Text("0").tag(3)
+                        Text("2").tag(4)
+                        Text("4").tag(5)
                     }
                 }
                 
