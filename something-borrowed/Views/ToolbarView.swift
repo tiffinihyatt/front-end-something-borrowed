@@ -19,7 +19,7 @@ struct ToolbarView: View {
                 case .second:
                     BrowseView()
                 case .third:
-                    NewGarmentView()
+                    AddImageView()
                 case .fourth:
                     ShoppingBagView()
                 }
