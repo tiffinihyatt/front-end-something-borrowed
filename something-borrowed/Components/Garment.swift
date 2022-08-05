@@ -12,8 +12,7 @@ struct Garment: Codable {
     var id: Int
     var title: String
     var brand: String
-    var street_size: Int
-    var label_size: Int
+    var size: Int
     var color: String
     var condition: String
     var price: Int
