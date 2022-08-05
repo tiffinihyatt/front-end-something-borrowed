@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Garment: Codable {
+struct Garment: Identifiable, Decodable {
     var id: Int
     var title: String
     var brand: String

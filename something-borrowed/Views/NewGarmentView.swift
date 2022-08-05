@@ -18,6 +18,8 @@ struct NewGarmentView: View {
     
     let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
     
+//    var garmentManager = GarmentManager()
+    
     var body: some View {
         NavigationView {
             Form {
@@ -62,10 +64,10 @@ struct NewGarmentView: View {
                     TextField("Price", text: $price)
                 }
                 
-                Button(action: {postNewGarment(title, brand, size, color, condition, price, description)},
-                       label: {
-                           Text("List your item!")
-                       })
+//                Button {garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+//                } label: {
+//                    Text("List your item!")
+//                }
             }
         }
     }
