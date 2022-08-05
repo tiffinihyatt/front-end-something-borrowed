@@ -62,7 +62,7 @@ struct NewGarmentView: View {
                     TextField("Price", text: $price)
                 }
                 
-                Button(action: {print("Gown successfully posted")},
+                Button(action: {postNewGarment(title, brand, size, color, condition, price, description)},
                        label: {
                            Text("List your item!")
                        })
