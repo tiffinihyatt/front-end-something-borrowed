@@ -20,6 +20,10 @@ struct NewGarmentView: View {
     
 //    var garmentManager = GarmentManager()
     
+    var incompleteForm: Bool {
+        self.title.isEmpty || self.brand.isEmpty || self.color.isEmpty || self.condition.isEmpty || self.price.isEmpty || self.description.isEmpty
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -64,6 +68,7 @@ struct NewGarmentView: View {
                 Button("List your item!") {
                   postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
                 }
+                .disabled(incompleteForm)
 //                Button {postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
 //                } label: {
 //                    Text("List your item!")
