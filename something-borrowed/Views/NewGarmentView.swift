@@ -28,31 +28,28 @@ struct NewGarmentView: View {
                 TextField("Item Name", text: $title)
 
                 Picker("Brand", selection: $brand) {
-                    Text("BHLDN").tag(0)
-                    Text("Leanne Marshall").tag(1)
-                    Text("Pantora Bridal").tag(2)
+                    Text("BHLDN").tag("BHLDN")
+                    Text("Leanne Marshall").tag("Leanne Marshall")
+                    Text("Pantora Bridal").tag("Pantora Bridal")
                 }
-//                .pickerStyle(WheelPickerStyle())
                 
                 Picker("Color", selection: $color) {
-                    Text("Black").tag(0)
-                    Text("Ivory").tag(1)
-                    Text("White").tag(2)
+                    Text("Black").tag("Black")
+                    Text("Ivory").tag("Ivory")
+                    Text("White").tag("White")
                 }
-//                .pickerStyle(WheelPickerStyle())
                 
                 Picker("Condition", selection: $condition) {
-                    Text("New with tags").tag(0)
-                    Text("Excellent used condition").tag(1)
-                    Text("Good used condition").tag(2)
-                    Text("Fair used condition").tag(3)
+                    Text("New with tags").tag("New with tags")
+                    Text("Excellent used condition").tag("Excellent used condition")
+                    Text("Good used condition").tag("Good used condition")
+                    Text("Fair used condition").tag("Fair used condition")
                 }
-//                .pickerStyle(WheelPickerStyle())
                 
                 Picker("Size", selection: $size) {
-                    Text("40").tag(0)
-                    Text("38").tag(1)
-                    Text("36").tag(2)
+                    Text("40").tag(40)
+                    Text("38").tag(38)
+                    Text("36").tag(36)
                 }
 //                .pickerStyle(WheelPickerStyle())
                 
