@@ -10,8 +10,7 @@ import SwiftUI
 struct NewGarmentView: View {
     @State private var title: String = ""
     @State private var brand: String = ""
-    @State private var streetSize: Int = 0
-    @State private var labelSize: Int = 0
+    @State private var size: Int = 0
     @State private var color: String = ""
     @State private var condition: String = ""
     @State private var price: Int = 0
@@ -20,35 +19,49 @@ struct NewGarmentView: View {
     let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
     
     var body: some View {
-        
-        VStack {
+        NavigationView {
             Form {
-                AddImageView()
+//                AddImageView()
                 
-                Section("Basic Information") {
-                    TextField("Item Name", text: $title)
-                    TextField("Brand", text: $brand)
-                    TextField("Color", text: $color)
-                    TextField("Condition", text: $condition)
+                TextField("Item Name", text: $title)
+
+                Picker("Brand", selection: $brand) {
+                    Text("BHLDN").tag(0)
+                    Text("Leanne Marshall").tag(1)
+                    Text("Pantora Bridal").tag(2)
                 }
+//                .pickerStyle(WheelPickerStyle())
                 
-                Section("Sizing") {
-                    Picker("Street Size", selection: $streetSize) {
-                        Text("0").tag(0)
-                        Text("2").tag(1)
-                        Text("4").tag(2)
-                    }
-                    
-                    Picker("Label Size", selection: $labelSize) {
-                        Text("0").tag(3)
-                        Text("2").tag(4)
-                        Text("4").tag(5)
-                    }
+                Picker("Color", selection: $color) {
+                    Text("Black").tag(0)
+                    Text("Ivory").tag(1)
+                    Text("White").tag(2)
                 }
+//                .pickerStyle(WheelPickerStyle())
+                
+                Picker("Condition", selection: $condition) {
+                    Text("New with tags").tag(0)
+                    Text("Excellent used condition").tag(1)
+                    Text("Good used condition").tag(2)
+                    Text("Fair used condition").tag(3)
+                }
+//                .pickerStyle(WheelPickerStyle())
+                
+                Picker("Size", selection: $size) {
+                    Text("40").tag(0)
+                    Text("38").tag(1)
+                    Text("36").tag(2)
+                }
+//                .pickerStyle(WheelPickerStyle())
                 
                 Section("Item Description") {
-                    TextField("Description", text: $description)
+                    TextField("Tell us about your item!", text: $description)
                 }
+                
+                Button(action: {print("Gown successfully posted")},
+                       label: {
+                           Text("List your item!")
+                       })
             }
         }
     }
