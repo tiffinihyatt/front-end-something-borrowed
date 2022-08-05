@@ -13,7 +13,7 @@ struct NewGarmentView: View {
     @State private var size: Int = 0
     @State private var color: String = ""
     @State private var condition: String = ""
-    @State private var price: Int = 0
+    @State private var price: String = ""
     @State private var description: String = ""
     
     let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
@@ -56,6 +56,10 @@ struct NewGarmentView: View {
                 
                 Section("Item Description") {
                     TextField("Tell us about your item!", text: $description)
+                }
+                
+                Section("Price") {
+                    TextField("Price", text: $price)
                 }
                 
                 Button(action: {print("Gown successfully posted")},
