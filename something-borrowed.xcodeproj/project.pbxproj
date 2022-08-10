@@ -97,8 +97,8 @@
 				F950CF272894608400B73A65 /* WelcomeView.swift */,
 				F9C8BE43289A0F650006B4E1 /* BrowseView.swift */,
 				F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */,
-				F953C67D289B681B0004F723 /* ShoppingBagView.swift */,
 				F95CFA58289B7539002AB219 /* AddImageView.swift */,
+				F953C67D289B681B0004F723 /* ShoppingBagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -34,7 +34,7 @@ struct AddImageView: View {
             .onTapGesture {
                 showingImagePicker = true
             }
-            .padding(20)
+            .padding(10)
             .onChange(of: inputImage) { _ in loadImage() }
             .sheet(isPresented: $showingImagePicker) {
                 ImagePicker(image: $inputImage)
