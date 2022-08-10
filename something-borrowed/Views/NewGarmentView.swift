@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewGarmentView: View {
+    @State private var garmentManager = apiManager()
+    
     @State private var title: String = ""
     @State private var brand: String = ""
     @State private var size: Int = 0
@@ -23,8 +25,6 @@ struct NewGarmentView: View {
     
     let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
     
-//    var garmentManager = GarmentManager()
-    
     var incompleteForm: Bool {
         self.title.isEmpty || self.brand.isEmpty || self.color.isEmpty || self.condition.isEmpty || self.price.isEmpty || self.description.isEmpty
     }
@@ -32,7 +32,6 @@ struct NewGarmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                AddImageView()
                 ZStack {
                     Rectangle()
                         .fill(.secondary)
@@ -96,7 +95,7 @@ struct NewGarmentView: View {
                     }
                     
                     Button("List your item!") {
-                      postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                        garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
                     }
 //                    Add secondary API call to post garment image
                     .disabled(incompleteForm)
@@ -107,8 +106,8 @@ struct NewGarmentView: View {
         }
     }
     
-    func postNewGarment(title: String, brand: String, size: Int, color: String, condition: String, price: String, description: String) {
-        guard let url = URL(string: "http://127.0.0.1:5000/garments") else {
+    func postNewImage(garment_id: Int, image: String) {
+        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {
             print("Error: missing URL")
             return
         }
@@ -118,22 +117,16 @@ struct NewGarmentView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let requestBody: [String: AnyHashable] = [
-            "title": title,
-            "brand": brand,
-            "size": size,
-            "color": color,
-            "condition": condition,
-            "price": price,
-            "description": description
+            "files": image
         ]
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: .fragmentsAllowed)
-        
+
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 return
             }
-            
+
             do {
                 let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 print("Success! \(response)")
@@ -144,7 +137,6 @@ struct NewGarmentView: View {
         }
         
         task.resume()
-        
     }
     
     func loadImage() {
