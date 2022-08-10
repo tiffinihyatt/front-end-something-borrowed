@@ -55,7 +55,6 @@ struct NewGarmentView: View {
                     Text("38").tag(38)
                     Text("36").tag(36)
                 }
-//                .pickerStyle(WheelPickerStyle())
                 
                 Section("Item Description") {
                     TextField("Tell us about your item!", text: $description)
@@ -69,10 +68,6 @@ struct NewGarmentView: View {
                   postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
                 }
                 .disabled(incompleteForm)
-//                Button {postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-//                } label: {
-//                    Text("List your item!")
-//                }
             }
             .navigationTitle("List an Item")
         }
