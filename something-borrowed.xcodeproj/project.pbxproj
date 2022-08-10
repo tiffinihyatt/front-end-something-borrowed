@@ -16,7 +16,7 @@
 		F95CFA57289B74DC002AB219 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CFA56289B74DC002AB219 /* ImageManager.swift */; };
 		F95CFA59289B7539002AB219 /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CFA58289B7539002AB219 /* AddImageView.swift */; };
 		F9775BA8289D5BAC005583F1 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9775BA7289D5BAC005583F1 /* Network.swift */; };
-		F99CEDA7289C55FF007A8543 /* GarmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99CEDA6289C55FF007A8543 /* GarmentManager.swift */; };
+		F99CEDA7289C55FF007A8543 /* apiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99CEDA6289C55FF007A8543 /* apiManager.swift */; };
 		F9C22C1C289634C900DFB3FC /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C22C1B289634C900DFB3FC /* ToolbarView.swift */; };
 		F9C8BE44289A0F650006B4E1 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BE43289A0F650006B4E1 /* BrowseView.swift */; };
 		F9C8BE46289A17570006B4E1 /* NewGarmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */; };
@@ -34,7 +34,7 @@
 		F95CFA56289B74DC002AB219 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		F95CFA58289B7539002AB219 /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
 		F9775BA7289D5BAC005583F1 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		F99CEDA6289C55FF007A8543 /* GarmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentManager.swift; sourceTree = "<group>"; };
+		F99CEDA6289C55FF007A8543 /* apiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiManager.swift; sourceTree = "<group>"; };
 		F9C22C1B289634C900DFB3FC /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		F9C8BE43289A0F650006B4E1 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		F9C8BE45289A17570006B4E1 /* NewGarmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGarmentView.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		F95CFA55289B6CC3002AB219 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				F99CEDA6289C55FF007A8543 /* GarmentManager.swift */,
+				F99CEDA6289C55FF007A8543 /* apiManager.swift */,
 				F9775BA7289D5BAC005583F1 /* Network.swift */,
 				F95CFA56289B74DC002AB219 /* ImageManager.swift */,
 			);
@@ -202,7 +202,7 @@
 				F9C8BE46289A17570006B4E1 /* NewGarmentView.swift in Sources */,
 				F95CFA59289B7539002AB219 /* AddImageView.swift in Sources */,
 				F950CF192894310B00B73A65 /* something_borrowedApp.swift in Sources */,
-				F99CEDA7289C55FF007A8543 /* GarmentManager.swift in Sources */,
+				F99CEDA7289C55FF007A8543 /* apiManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
