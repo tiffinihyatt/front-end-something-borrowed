@@ -72,6 +72,7 @@ struct BrowseView: View {
                     brand: "--",
                     size: 0,
                     color: "--",
+                    image_file: "",
                     condition: "--",
                     price: "--",
                     description: "--",

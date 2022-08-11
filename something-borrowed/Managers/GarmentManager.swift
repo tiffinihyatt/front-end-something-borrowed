@@ -28,6 +28,25 @@ class GarmentManager {
         return decodedData
     }
     
+//    get garments in shopping bag
+    func getShoppingBag() async throws -> [Garment] {
+        guard let url = URL(string: "http://127.0.0.1:5000/garments/bag") else {
+            fatalError("Missing or incorrect URL")
+        }
+
+        let urlRequest = URLRequest(url: url)
+
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            fatalError("Error retrieving shopping bag")
+        }
+
+        let decodedData = try JSONDecoder().decode([Garment].self, from: data)
+
+        return decodedData
+    }
+    
     
 //    create new garment
     func addNewGarment(title: String, brand: String, size: Int, color: String, condition: String, price: String, description: String) async throws {

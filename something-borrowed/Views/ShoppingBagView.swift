@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ShoppingBagView: View {
     
-    @State private var itemsInBag = [Garment]()
+    @State private var garmentManager = GarmentManager()
+    @State private var garmentsInBag = [Garment]()
     
     var body: some View {
         NavigationView {
-            List(itemsInBag) { item in
+            List(garmentsInBag) { garment in
                 VStack(alignment: .leading) {
                     Text(garment.title)
                         .font(.headline)
@@ -24,7 +25,12 @@ struct ShoppingBagView: View {
             }
             .navigationTitle("Your Bag")
             .task {
-                await getAllGarments()
+                do {
+                    garmentsInBag = try await garmentManager.getShoppingBag()
+                } catch {
+                    print("\(error)")
+                }
+                
             }
         }
     }
