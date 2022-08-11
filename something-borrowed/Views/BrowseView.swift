@@ -9,27 +9,41 @@ import SwiftUI
 
 struct BrowseView: View {
     @State private var garments = [Garment]()
+    @State private var isGarmentSelected: Bool = false
+    @State var selectedGarment: Garment?
     
     var body: some View {
-        NavigationView {
-            List(garments) { garment in
-                Button {
-                    print("You selected \(garment.title)")
-                } label: {
-                    VStack(alignment: .leading) {
-                        Text(garment.title)
-                            .font(.headline)
+        if !isGarmentSelected {
+            NavigationView {
+                List(garments) { garment in
+                    Button {
+                        print("You selected \(garment.title)")
+                        isGarmentSelected = true
+                        selectedGarment = garment
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text(garment.title)
+                                .font(.headline)
 
-                        Text("Size: \(garment.size)")
-                        Text("Price: $\(garment.price)")
+                            Text("Size: \(garment.size)")
+                            Text("Price: $\(garment.price)")
+                        }
                     }
                 }
+                .navigationTitle("Browse")
+                .task {
+                    await getAllGarments()
+                }
             }
-            .navigationTitle("Browse")
-            .task {
-                await getAllGarments()
+        } else {
+            NavigationView {
+                VStack {
+                    Text("You selected \(selectedGarment?.title ?? "nothing")")
+                }
             }
         }
+//        if not selectedGarment: display all garments
+//        else, call getSingleGarment and display alternative view
     }
     
     func getAllGarments() async {
