@@ -37,10 +37,23 @@ struct BrowseView: View {
             }
         } else {
             NavigationView {
-                VStack {
-                    Text("You selected \(selectedGarment?.title ?? "nothing")")
+                VStack(alignment: .leading) {
+                    Text(selectedGarment?.title ?? "Oops! Looks like that garment is unavailable.")
+                        .font(.headline)
+                    Text("$\(selectedGarment!.price)")
+                        .bold()
+                    Text("")
+                    Text("Brand: \(selectedGarment!.brand)")
+                    Text("Size: \(String(selectedGarment!.size))")
+                    Text("Condition: \(selectedGarment!.condition)")
+                    Text("")
+                    Text("Description")
+                        .italic()
+                    Text(selectedGarment!.description)
                 }
+                .frame(maxWidth: .infinity)
             }
+            .navigationTitle(selectedGarment!.title)
         }
 //        if not selectedGarment: display all garments
 //        else, call getSingleGarment and display alternative view
