@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct ShoppingBagView: View {
+    
+    @State private var itemsInBag = [Garment]()
+    
     var body: some View {
-        Text("Shopping Bag")
+        NavigationView {
+            List(itemsInBag) { item in
+                VStack(alignment: .leading) {
+                    Text(garment.title)
+                        .font(.headline)
+
+                    Text("Size: \(garment.size)")
+                    Text("Price: $\(garment.price)")
+                }
+            }
+            .navigationTitle("Your Bag")
+            .task {
+                await getAllGarments()
+            }
+        }
     }
 }
 
