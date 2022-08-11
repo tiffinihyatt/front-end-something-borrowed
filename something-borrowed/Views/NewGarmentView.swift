@@ -95,7 +95,9 @@ struct NewGarmentView: View {
                     }
                     
                     Button("List your item!") {
-                        garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                        Task {
+                            try await garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                        }
                     }
 //                    Add secondary API call to post garment image
                     .disabled(incompleteForm)
@@ -106,38 +108,10 @@ struct NewGarmentView: View {
         }
     }
     
-    func postNewImage(garment_id: Int, image: String) {
-        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {
-            print("Error: missing URL")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let requestBody: [String: AnyHashable] = [
-            "files": image
-        ]
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: .fragmentsAllowed)
-
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-
-            do {
-                let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print("Success! \(response)")
-            }
-            catch {
-                print(error)
-            }
-        }
-        
-        task.resume()
-    }
+//    func postGarmentWithImage() async {
+//        let garmentId: () = await garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+//        let response = await garmentManager.postNewImage(garment_id: garmentId, image: image)
+//    }
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
