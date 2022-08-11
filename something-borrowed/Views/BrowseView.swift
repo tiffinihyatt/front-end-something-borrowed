@@ -13,12 +13,16 @@ struct BrowseView: View {
     var body: some View {
         NavigationView {
             List(garments) { garment in
-                VStack(alignment: .leading) {
-                    Text(garment.title)
-                        .font(.headline)
+                Button {
+                    print("You selected \(garment.title)")
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(garment.title)
+                            .font(.headline)
 
-                    Text("Size: \(garment.size)")
-                    Text("Price: $\(garment.price)")
+                        Text("Size: \(garment.size)")
+                        Text("Price: $\(garment.price)")
+                    }
                 }
             }
             .navigationTitle("Browse")
