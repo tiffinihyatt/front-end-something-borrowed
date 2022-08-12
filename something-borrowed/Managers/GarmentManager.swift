@@ -96,36 +96,3 @@ class GarmentManager {
         return decodedData
     }
 }
-    
-//    func postNewImage(garment_id: String, image: String) {
-//        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {
-//            print("Error: missing URL")
-//            return
-//        }
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//
-//        let requestBody: [String: AnyHashable] = [
-//            "files": image
-//        ]
-//
-//        request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: .fragmentsAllowed)
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, _, error in
-//            guard let data = data, error == nil else {
-//                return
-//            }
-//
-//            do {
-//                let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                print("Success! \(response)")
-//            }
-//            catch {
-//                print(error)
-//            }
-//        }
-//
-//        task.resume()
-//    }
