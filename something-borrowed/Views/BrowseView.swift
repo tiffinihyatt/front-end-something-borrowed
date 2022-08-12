@@ -67,16 +67,16 @@ struct BrowseView: View {
         } catch {
             garments = [
                 Garment(
-                    id: 0,
-                    title: "Oops! No garments to show.",
                     brand: "--",
-                    size: 0,
                     color: "--",
-                    image_file: "",
                     condition: "--",
-                    price: "--",
                     description: "--",
-                    is_available: false
+                    id: 0,
+                    image_file: "",
+                    is_available: false,
+                    price: "--",
+                    size: 0,
+                    title: "Oops! No garments to show."
                     )
             ]
         }
