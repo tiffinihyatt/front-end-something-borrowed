@@ -65,9 +65,15 @@ struct BrowseView: View {
                         HStack {
                             Image(systemName: "plus.circle")
                             Text("ADD TO BAG")
+                                .foregroundColor(.white)
+                                .bold()
                         }
                     }
-                    .padding(20)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(Color.pink)
+                    )
                 }
                 .frame(maxWidth: .infinity)
             }
