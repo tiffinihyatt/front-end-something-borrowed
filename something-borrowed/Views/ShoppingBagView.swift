@@ -18,8 +18,6 @@ struct ShoppingBagView: View {
                 VStack(alignment: .leading) {
                     Text(garment.title)
                         .font(.headline)
-
-                    Text("Size: \(garment.size)")
                     Text("Price: $\(garment.price)")
                 }
             }

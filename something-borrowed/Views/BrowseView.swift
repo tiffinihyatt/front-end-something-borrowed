@@ -72,11 +72,10 @@ struct BrowseView: View {
                     condition: "--",
                     description: "--",
                     id: 0,
-                    image_file: "",
-                    is_available: false,
+                    is_available: true,
                     price: "--",
-                    size: 0,
-                    title: "Oops! No garments to show."
+                    size: 40,
+                    title: "Oops! No garments to show. Check back later!"
                     )
             ]
         }

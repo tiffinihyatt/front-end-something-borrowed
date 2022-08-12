@@ -14,7 +14,6 @@ struct Garment: Identifiable, Decodable {
     var condition: String
     var description: String
     var id: Int
-    var image_file: String
     var is_available: Bool
     var price: String
     var size: Int
