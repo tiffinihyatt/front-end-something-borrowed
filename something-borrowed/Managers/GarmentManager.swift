@@ -10,7 +10,7 @@ import Foundation
 
 class GarmentManager {
 //    get single garment
-    func getSingleGarment(garmentId: Int) async throws -> SingleGarmentResponseBody {
+    func getSingleGarment(garmentId: Int) async throws -> Garment {
         guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garmentId)") else {
             fatalError("Missing or incorrect URL")
         }
@@ -23,7 +23,7 @@ class GarmentManager {
             fatalError("Error retrieving garment")
         }
         
-        let decodedData = try JSONDecoder().decode(SingleGarmentResponseBody.self, from: data)
+        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
         
         return decodedData
     }
@@ -77,41 +77,37 @@ class GarmentManager {
         }
     }
     
-//    add garment image
-    func addGarmentImage(garment_id: Int, imageFile: UIImage) async throws {
-        let body: [String: Any] = [
-            "file": imageFile
-        ]
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: body)
-        
-        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {
+//    add garment to cart
+    func addToCart(garmentId: Int) async throws -> Garment {
+        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garmentId)") else {
             fatalError("Missing or incorrect URL")
         }
         
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.httpBody = jsonData
+        let urlRequest = URLRequest(url: url)
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-            fatalError("Error uploading garment image")
+            fatalError("Error adding item to cart")
         }
+        
+        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
+        
+        return decodedData
     }
 }
 
-struct SingleGarmentResponseBody: Decodable {
-    var brand: String
-    var color: String
-    var condition: String
-    var description: String
-    var id: Int
-    var is_available: Bool
-    var price: String
-    var size: Int
-    var title: String
-}
+//struct SingleGarmentResponseBody: Decodable {
+//    var brand: String
+//    var color: String
+//    var condition: String
+//    var description: String
+//    var id: Int
+//    var is_available: Bool
+//    var price: String
+//    var size: Int
+//    var title: String
+//}
     
 //    func postNewImage(garment_id: String, image: String) {
 //        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {

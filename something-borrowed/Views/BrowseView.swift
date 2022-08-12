@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BrowseView: View {
+    @State private var garmentManager = GarmentManager()
     @State private var garments = [Garment]()
     @State private var isGarmentSelected: Bool = false
     @State var selectedGarment: Garment?
@@ -50,6 +51,23 @@ struct BrowseView: View {
                     Text("Description")
                         .italic()
                     Text(selectedGarment!.description)
+                    
+                    Button {
+                        print("Added item to cart")
+                        Task {
+                            do {
+                                try await selectedGarment = garmentManager.addToCart(garmentId: selectedGarment!.id)
+                            } catch {
+                                print("\(error)")
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                            Text("ADD TO BAG")
+                        }
+                    }
+                    .padding(20)
                 }
                 .frame(maxWidth: .infinity)
             }
