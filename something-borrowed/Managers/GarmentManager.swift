@@ -96,18 +96,6 @@ class GarmentManager {
         return decodedData
     }
 }
-
-//struct SingleGarmentResponseBody: Decodable {
-//    var brand: String
-//    var color: String
-//    var condition: String
-//    var description: String
-//    var id: Int
-//    var is_available: Bool
-//    var price: String
-//    var size: Int
-//    var title: String
-//}
     
 //    func postNewImage(garment_id: String, image: String) {
 //        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garment_id)/upload") else {

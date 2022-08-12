@@ -23,8 +23,40 @@ struct NewGarmentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     
+//    data for picker selections
     private var sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
-    @State private var sizeIndex = 0
+    private var colors = [
+        "Black",
+        "Blue",
+        "Brown",
+        "Gold",
+        "Green",
+        "Grey",
+        "Ivory",
+        "Multicolored",
+        "Orange",
+        "Other",
+        "Pink",
+        "Purple",
+        "Red",
+        "Silver",
+        "White",
+        "Yellow"
+    ]
+    private var brands = [
+        "Atelier Mon",
+        "BHLDN",
+        "BEC + BRIDGE",
+        "Christian Siriano",
+        "Halston",
+        "Jenny Yoo",
+        "Leanne Marshall",
+        "Monique Lhuillier",
+        "Pantora Bridal",
+        "Reem Acra",
+        "Ronny Kobo",
+        "Watters",
+    ]
     
     var incompleteForm: Bool {
         self.title.isEmpty || self.brand.isEmpty || self.color.isEmpty || self.condition.isEmpty || self.price.isEmpty || self.description.isEmpty
@@ -63,15 +95,15 @@ struct NewGarmentView: View {
                     TextField("Item Name", text: $title)
 
                     Picker("Brand", selection: $brand) {
-                        Text("BHLDN").tag("BHLDN")
-                        Text("Leanne Marshall").tag("Leanne Marshall")
-                        Text("Pantora Bridal").tag("Pantora Bridal")
+                        ForEach(brands, id: \.self) {brand in
+                            Text(brand)
+                        }
                     }
                     
                     Picker("Color", selection: $color) {
-                        Text("Black").tag("Black")
-                        Text("Ivory").tag("Ivory")
-                        Text("White").tag("White")
+                        ForEach(colors, id: \.self) {color in
+                            Text(color)
+                        }
                     }
                     
                     Picker("Condition", selection: $condition) {
@@ -81,11 +113,11 @@ struct NewGarmentView: View {
                         Text("Fair used condition").tag("Fair used condition")
                     }
                     
-                    Picker("Size", selection: $sizeIndex, content: {
-                        ForEach(0..<sizes.count, content: { index in
-                            Text(String(sizes[index]))
-                        })
-                    })
+                    Picker("Size", selection: $size) {
+                        ForEach(sizes, id: \.self) {size in
+                            Text(String(size))
+                        }
+                    }
                     
                     Section("Item Description") {
                         TextField("Tell us about your item!", text: $description)
