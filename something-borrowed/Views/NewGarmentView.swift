@@ -23,7 +23,8 @@ struct NewGarmentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     
-    let sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
+    private var sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
+    @State private var sizeIndex = 0
     
     var incompleteForm: Bool {
         self.title.isEmpty || self.brand.isEmpty || self.color.isEmpty || self.condition.isEmpty || self.price.isEmpty || self.description.isEmpty
@@ -80,11 +81,11 @@ struct NewGarmentView: View {
                         Text("Fair used condition").tag("Fair used condition")
                     }
                     
-                    Picker("Size", selection: $size) {
-                        Text("40").tag(40)
-                        Text("38").tag(38)
-                        Text("36").tag(36)
-                    }
+                    Picker("Size", selection: $sizeIndex, content: {
+                        ForEach(0..<sizes.count, content: { index in
+                            Text(String(sizes[index]))
+                        })
+                    })
                     
                     Section("Item Description") {
                         TextField("Tell us about your item!", text: $description)
