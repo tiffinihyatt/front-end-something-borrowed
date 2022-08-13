@@ -56,6 +56,7 @@ struct BrowseView: View {
                         Task {
                             do {
                                 try await garmentManager.addToCart(garmentId: selectedGarment!.id)
+                                isGarmentSelected = false
                             } catch {
                                 print("\(error)")
                             }
