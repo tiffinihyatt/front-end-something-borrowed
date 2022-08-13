@@ -8,6 +8,23 @@
 import Foundation
 import PhotosUI
 import SwiftUI
+import Amplify
+
+class ImageManager {
+    
+    func uploadImage(image: UIImage, imageKey: Int) {
+        let imageData = image.jpegData(compressionQuality: 1)!
+        
+        Amplify.Storage.uploadData(key: String(imageKey), data: imageData) { result in
+            switch result {
+            case .success(let uploadedData):
+                print(uploadedData)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?

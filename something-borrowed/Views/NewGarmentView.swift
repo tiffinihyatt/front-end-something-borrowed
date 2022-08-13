@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
+    @State private var imageManager = ImageManager()
     
     @State private var title: String = ""
     @State private var brand: String = ""
