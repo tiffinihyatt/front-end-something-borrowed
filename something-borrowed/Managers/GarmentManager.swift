@@ -49,7 +49,7 @@ class GarmentManager {
     
     
 //    create new garment
-    func addNewGarment(title: String, brand: String, size: Int, color: String, condition: String, price: String, description: String) async throws {
+    func addNewGarment(title: String, brand: String, size: Int, color: String, condition: String, price: String, description: String) async throws -> Garment {
         let body: [String: Any] = [
             "title": title,
             "brand": brand,
@@ -72,9 +72,14 @@ class GarmentManager {
         urlRequest.httpBody = jsonData
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             fatalError("Error posting new garment")
         }
+        
+        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
+        
+        return decodedData
     }
     
 //    add garment to cart
