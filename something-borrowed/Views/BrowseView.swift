@@ -52,21 +52,13 @@ struct BrowseView: View {
                         .italic()
                     Text(selectedGarment!.description)
                     
-                    Button {
-                        print("Added item to cart")
+                    Button("ADD TO BAG") {
                         Task {
                             do {
-                                try await selectedGarment = garmentManager.addToCart(garmentId: selectedGarment!.id)
+                                try await garmentManager.addToCart(garmentId: selectedGarment!.id)
                             } catch {
                                 print("\(error)")
                             }
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                            Text("ADD TO BAG")
-                                .foregroundColor(.white)
-                                .bold()
                         }
                     }
                     .padding()

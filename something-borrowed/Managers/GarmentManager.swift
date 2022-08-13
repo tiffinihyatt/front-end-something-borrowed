@@ -78,12 +78,13 @@ class GarmentManager {
     }
     
 //    add garment to cart
-    func addToCart(garmentId: Int) async throws -> Garment {
+    func addToCart(garmentId: Int) async throws {
         guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garmentId)") else {
             fatalError("Missing or incorrect URL")
         }
         
-        let urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "PATCH"
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
@@ -91,8 +92,8 @@ class GarmentManager {
             fatalError("Error adding item to cart")
         }
         
-        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
-        
-        return decodedData
+//        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
+//
+//        return decodedData
     }
 }
