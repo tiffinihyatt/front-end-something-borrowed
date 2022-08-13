@@ -15,11 +15,26 @@ struct ShoppingBagView: View {
     var body: some View {
         NavigationView {
             List(garmentsInBag) { garment in
-                VStack(alignment: .leading) {
-                    Text(garment.title)
-                        .font(.headline)
-                    Text("Price: $\(garment.price)")
-                }
+                    VStack(alignment: .leading) {
+                        Text(garment.title)
+                            .font(.headline)
+                        Text("Price: $\(garment.price)")
+                        
+                        HStack {
+                            Button(action: {
+                                Task {
+                                    do {
+                                        try await garmentManager.addToCart(garmentId: garment.id)
+                                        garmentsInBag = try await garmentManager.getShoppingBag()
+                                    } catch {
+                                        print("\(error)")
+                                    }
+                                }
+                            }) {
+                                Image(systemName: "trash.circle.fill")
+                            }
+                        }
+                    }
             }
             .navigationTitle("Your Bag")
             .task {
