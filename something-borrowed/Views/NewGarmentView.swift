@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
-//    @State private var imageManager = ImageManager()
     
 //    state vars for new garment
     @State private var newGarment: Garment?
@@ -22,9 +21,9 @@ struct NewGarmentView: View {
     @State private var description: String = ""
     
 //    state vars for adding image
-    @State private var image: Image?
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?
+    @State private var changeGarmentImage = false
+    @State private var openCameraRoll = false
+    @State private var selectedImage = UIImage()
     
 //    data for picker selections
     private var sizes = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
@@ -68,31 +67,33 @@ struct NewGarmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                ZStack {
-//                    Rectangle()
-//                        .fill(.secondary)
-//                        .frame(width: 300, height: 200)
-//
-//                    HStack {
-//                        Image(systemName: "photo.on.rectangle.angled")
-//                            .foregroundColor(.white)
-//                        Text("Tap to add a photo!")
-//                            .foregroundColor(.white)
-//                            .font(.headline)
-//                    }
-//
-//                    image?
-//                        .resizable()
-//                        .scaledToFit()
-//                }
-//                .onTapGesture {
-//                    showingImagePicker = true
-//                }
-//                .padding(10)
-//                .onChange(of: inputImage) { _ in loadImage() }
-//                .sheet(isPresented: $showingImagePicker) {
-//                    ImagePicker(image: $inputImage)
-//                }
+                ZStack(alignment: .bottomTrailing) {
+                    Button(action: {
+                        changeGarmentImage = true
+                        openCameraRoll = true
+                        
+                    }, label: {
+                        if changeGarmentImage {
+                            Image(uiImage: selectedImage)
+                                .resizable()
+                                .frame(width: 210, height: 210, alignment: .center)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                        } else {
+                            Image("addListingImage")
+                                .resizable()
+                                .frame(width: 210, height: 210, alignment: .center)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                        }
+                })
+                    Image(systemName: "plus")
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                        .background(.gray)
+                        .clipShape(Circle())
+                }
+                .sheet(isPresented: $openCameraRoll) {
+                    ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+                }
                 
                 Form {
                     TextField("Item Name", text: $title)
@@ -129,16 +130,16 @@ struct NewGarmentView: View {
                     Section("Price") {
                         TextField("Price", text: $price)
                     }
-                    
-                    Button("List your item!") {
-                        Task {
-                            try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-//                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
-                        }
-                    }
-//                    Add secondary API call to post garment image
-                    .disabled(incompleteForm)
                 }
+                
+                Button("List your item!") {
+                    Task {
+                        try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+//                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
+                    }
+                }
+//                    Add secondary API call to post garment image
+                .disabled(incompleteForm)
             }
         
             .navigationTitle("List an Item")
@@ -149,11 +150,6 @@ struct NewGarmentView: View {
 //        let garmentId: () = await garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
 //        let response = await garmentManager.postNewImage(garment_id: garmentId, image: image)
 //    }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-    }
 }
 
 struct NewGarmentView_Previews: PreviewProvider {
