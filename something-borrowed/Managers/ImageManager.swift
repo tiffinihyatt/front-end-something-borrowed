@@ -2,54 +2,41 @@
 //  ImageManager.swift
 //  something-borrowed
 //
-//  Created by Tiffini Hyatt on 8/3/22.
+//  Created by Tiffini Hyatt on 8/14/22.
 //
 
+import Foundation
+import Amplify
 import SwiftUI
-import UIKit
 
-struct ImagePicker: UIViewControllerRepresentable {
+class ImageManager {
     
-    @Binding var selectedImage: UIImage
-    @Environment(\.presentationMode) private var presentationMode
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func uploadImage(image: UIImage, imageKey: Int) {
+        let imageData = image.jpegData(compressionQuality: 1)!
+        let stringImageKey = String(imageKey)
         
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
-        imagePicker.delegate = context.coordinator
-        
-        return imagePicker
-        
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-        //leave alone for right now
-    }
-    
-    final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-     
-        var parent: ImagePicker
-     
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-    
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-     
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
+        Amplify.Storage.uploadData(key: stringImageKey, data: imageData) { result in
+            switch result {
+            case .success(let uploadedData):
+                print(uploadedData)
+            case .failure(let error):
+                print(error)
             }
-     
-            parent.presentationMode.wrappedValue.dismiss()
         }
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
+//    func downloadImage(imageKey: Int) {
+//        let stringImageKey = String(imageKey)
+//
+//        Amplify.Storage.downloadData(key: stringImageKey) { result in
+//            switch result {
+//            case .success(let data):
+//                DispatchQueue.main.async {
+//                    self.image = UIImage(data: data)
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
 }

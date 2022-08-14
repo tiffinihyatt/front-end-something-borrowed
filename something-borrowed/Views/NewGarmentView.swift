@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
+    @State private var imageManager = ImageManager()
     
 //    state vars for new garment
     @State private var newGarment: Garment?
@@ -135,7 +136,7 @@ struct NewGarmentView: View {
                 Button("List your item!") {
                     Task {
                         try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-//                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
+                            imageManager.uploadImage(image: selectedImage, imageKey: newGarment!.id)
                     }
                 }
 //                    Add secondary API call to post garment image
