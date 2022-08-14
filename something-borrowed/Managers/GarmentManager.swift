@@ -91,7 +91,7 @@ class GarmentManager {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "PATCH"
         
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (_, response) = try await URLSession.shared.data(for: urlRequest)
         
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             fatalError("Error adding item to cart")

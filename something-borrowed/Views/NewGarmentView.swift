@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
-    @State private var imageManager = ImageManager()
+//    @State private var imageManager = ImageManager()
     
 //    state vars for new garment
     @State private var newGarment: Garment?
@@ -68,31 +68,31 @@ struct NewGarmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(.secondary)
-                        .frame(width: 300, height: 200)
-                    
-                    HStack {
-                        Image(systemName: "photo.on.rectangle.angled")
-                            .foregroundColor(.white)
-                        Text("Tap to add a photo!")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
-                    
-                    image?
-                        .resizable()
-                        .scaledToFit()
-                }
-                .onTapGesture {
-                    showingImagePicker = true
-                }
-                .padding(10)
-                .onChange(of: inputImage) { _ in loadImage() }
-                .sheet(isPresented: $showingImagePicker) {
-                    ImagePicker(image: $inputImage)
-                }
+//                ZStack {
+//                    Rectangle()
+//                        .fill(.secondary)
+//                        .frame(width: 300, height: 200)
+//
+//                    HStack {
+//                        Image(systemName: "photo.on.rectangle.angled")
+//                            .foregroundColor(.white)
+//                        Text("Tap to add a photo!")
+//                            .foregroundColor(.white)
+//                            .font(.headline)
+//                    }
+//
+//                    image?
+//                        .resizable()
+//                        .scaledToFit()
+//                }
+//                .onTapGesture {
+//                    showingImagePicker = true
+//                }
+//                .padding(10)
+//                .onChange(of: inputImage) { _ in loadImage() }
+//                .sheet(isPresented: $showingImagePicker) {
+//                    ImagePicker(image: $inputImage)
+//                }
                 
                 Form {
                     TextField("Item Name", text: $title)
@@ -133,7 +133,7 @@ struct NewGarmentView: View {
                     Button("List your item!") {
                         Task {
                             try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
+//                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
                         }
                     }
 //                    Add secondary API call to post garment image
