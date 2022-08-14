@@ -11,6 +11,8 @@ struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
     @State private var imageManager = ImageManager()
     
+//    state vars for new garment
+    @State private var newGarment: Garment?
     @State private var title: String = ""
     @State private var brand: String = ""
     @State private var size: Int = 0
@@ -130,7 +132,8 @@ struct NewGarmentView: View {
                     
                     Button("List your item!") {
                         Task {
-                            try await garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                            try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                            imageManager.uploadImage(image: inputImage!, imageKey: newGarment!.id)
                         }
                     }
 //                    Add secondary API call to post garment image
