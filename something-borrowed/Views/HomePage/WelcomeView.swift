@@ -10,28 +10,43 @@ import SwiftUI
 struct WelcomeView: View {
     var body: some View {
         VStack {
-            HStack {
-                Image("ring logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height:45)
-                Text("something borrowed")
-                    .font(.title)
-                    .frame(width: 250)
+            ZStack {
+                VStack {
+                    Image("tealArch")
+                        .resizable()
+//                        .aspectRatio(contentMode: .fit)
+                        .edgesIgnoringSafeArea(.top)
+                        .frame(height: 500)
+                }
+                
+                VStack {
+                    HStack {
+                        Image("ring logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height:45)
+                        Text("something borrowed")
+                            .font(.title)
+                            .frame(width: 250)
+                    }
+                    
+                    Text("gently used wedding attire")
+                        .font(.headline)
+                    Text("for the modern bride")
+                        .font(.headline)
+                }
             }
+            Spacer()
+//
+//                VStack {
+//                    Text("Get started below!")
+//                        .font(.title3)
+//                    Image(systemName: "arrow.down")
+//                }
+//            Spacer()
+//            Spacer()
+//            Spacer()
             
-            Button(action: {
-                print("Clicked log in button")
-            }) {
-                Text("LOG IN / SIGN UP")
-                    .foregroundColor(.white)
-                    .bold()
-            }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(Color.pink)
-            )
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
