@@ -20,13 +20,17 @@ struct BrowseView: View {
         if !isGarmentSelected {
             NavigationView {
                 List(garments) { garment in
+                    var newGarment = displayGarment(brand: garment.brand, color: garment.color, condition: garment.condition, description: garment.description, id: garment.id, price: garment.price, size: garment.size, title: garment.title, image: UIImage(systemName: "noGarmentImage"))
+//                    imageManager.downloadImage(garment: newGarment)
+                    
                     Button {
                         print("You selected \(garment.title)")
                         isGarmentSelected = true
                         selectedGarment = garment
                     } label: {
                         VStack(alignment: .leading) {
-                            Image(uiImage: imageManager.downloadImage(imageKey: garment.id))
+                            
+                            Image(uiImage: newGarment.image)
                                 .resizable()
                                 .frame(width: 210, height: 210, alignment: .center)
                                 .clipShape(Rectangle())
@@ -36,6 +40,9 @@ struct BrowseView: View {
                             Text("Size: \(garment.size)")
                             Text("Price: $\(garment.price)")
                         }
+                    }
+                    .onAppear() {
+                        self.imageManager.downloadImage(garment: newGarment)
                     }
                 }
                 .navigationTitle("Browse")
