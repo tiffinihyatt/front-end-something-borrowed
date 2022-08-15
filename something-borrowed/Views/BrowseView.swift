@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Amplify
 
 struct BrowseView: View {
     @State private var garmentManager = GarmentManager()
+    @State private var imageManager = ImageManager()
+    
     @State private var garments = [Garment]()
     @State private var isGarmentSelected: Bool = false
     @State var selectedGarment: Garment?
@@ -23,6 +26,10 @@ struct BrowseView: View {
                         selectedGarment = garment
                     } label: {
                         VStack(alignment: .leading) {
+                            Image(uiImage: imageManager.downloadImage(imageKey: garment.id))
+                                .resizable()
+                                .frame(width: 210, height: 210, alignment: .center)
+                                .clipShape(Rectangle())
                             Text(garment.title)
                                 .font(.headline)
 
