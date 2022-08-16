@@ -17,21 +17,23 @@ struct GarmentDetailView: View {
             
             Image(uiImage: image)
                 .resizable()
-                .frame(width: 210, height: 210, alignment: .center)
+                .frame(width: 300, height: 300, alignment: .center)
                 .clipShape(Rectangle())
             
             Text(garment.title)
-                .font(.headline)
+                .font(.custom("Avenir-Medium", size: 24))
             Text("$\(garment.price)")
-                .bold()
-            Text("")
-            Text("Brand: \(garment.brand)")
-            Text("Size: \(String(garment.size))")
-            Text("Condition: \(garment.condition)")
-            Text("")
-            Text("Description")
-                .italic()
-            Text(garment.description)
+                .font(.custom("Avenir-Medium", size: 24))
+            Group {
+                Text("")
+                Text(garment.brand)
+                Text("Size \(String(garment.size))")
+                Text(garment.condition)
+                Text("")
+                Text(garment.description)
+                    .italic()
+            }
+            .font(.custom("Avenir-Medium", size: 18))
         }
         .task {
             updateImage()

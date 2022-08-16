@@ -40,9 +40,11 @@ struct BrowseView: View {
                 }
             } else {
                 VStack {
-                    GarmentDetailView(garment: selectedGarment!)
+                    ScrollView {
+                        GarmentDetailView(garment: selectedGarment!)
+                    }
                     
-                    Button("ADD TO BAG") {
+                    Button {
                         Task {
                             do {
                                 try await garmentManager.addToCart(garmentId: selectedGarment!.id)
@@ -51,11 +53,16 @@ struct BrowseView: View {
                                 print("\(error)")
                             }
                         }
+                    } label: {
+                        Text("ADD TO BAG")
+                            .foregroundColor(.white)
+                            .font(.custom("Avenir-Medium", size: 21))
                     }
                     .padding()
                     .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.pink)
+                        Rectangle()
+                            .fill(Color("darkTeal"))
+                            .frame(width: 300)
                     )
                 }
                 .frame(maxWidth: .infinity)
