@@ -49,12 +49,16 @@ struct WelcomeView: View {
             }
             
             VStack {
+                Text("")
+                Text("")
+                Text("")
                 Text("Welcome!")
                     .font(.custom("Avenir-Medium", size: 24))
                 HStack(alignment: .center) {
                     Text("Please select an option below")
                         .font(.custom("Avenir-Medium", size: 20))
                     Image(systemName: "arrow.down.circle")
+                        .foregroundColor(Color("darkPeach"))
                 }
             }
             
