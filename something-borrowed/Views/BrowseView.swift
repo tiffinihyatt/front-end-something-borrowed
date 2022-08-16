@@ -40,18 +40,7 @@ struct BrowseView: View {
                 }
             } else {
                 VStack {
-                    Text(selectedGarment?.title ?? "Oops! Looks like that garment is unavailable.")
-                        .font(.headline)
-                    Text("$\(selectedGarment!.price)")
-                        .bold()
-                    Text("")
-                    Text("Brand: \(selectedGarment!.brand)")
-                    Text("Size: \(String(selectedGarment!.size))")
-                    Text("Condition: \(selectedGarment!.condition)")
-                    Text("")
-                    Text("Description")
-                        .italic()
-                    Text(selectedGarment!.description)
+                    GarmentDetailView(garment: selectedGarment!)
                     
                     Button("ADD TO BAG") {
                         Task {
@@ -70,7 +59,6 @@ struct BrowseView: View {
                     )
                 }
                 .frame(maxWidth: .infinity)
-                .navigationTitle(selectedGarment!.title)
                 .task {
                     await getAllGarments()
                 }
