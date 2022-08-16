@@ -25,14 +25,14 @@ class ImageManager {
         }
     }
     
-    func downloadImage(garment: displayGarment) {
-        let imageKey = String(garment.id)
+    func downloadImage(garmentId: Int, completion: @escaping (UIImage?) -> Void) {
+        let imageKey = String(garmentId)
         
             Amplify.Storage.downloadData(key: imageKey) { result in
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        garment.image = UIImage(data: data)!
+                        completion(UIImage(data: data))
                     }
                 case .failure(let error):
                     print(error)
