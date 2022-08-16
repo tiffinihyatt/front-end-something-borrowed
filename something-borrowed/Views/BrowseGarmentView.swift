@@ -13,7 +13,7 @@ struct BrowseGarmentView: View {
     var imageManager = ImageManager()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             
             Image(uiImage: image)
                 .resizable()

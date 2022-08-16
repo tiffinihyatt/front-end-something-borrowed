@@ -17,26 +17,29 @@ struct BrowseView: View {
     @State var selectedGarment: Garment?
     
     var body: some View {
-        if !isGarmentSelected {
-            NavigationView {
-                List(garments) { garment in
-                    Button {
-                        print("You selected \(garment.title)")
-                        isGarmentSelected = true
-                        selectedGarment = garment
-                    } label: {
-                        BrowseGarmentView(garment: garment)
+        NavigationView {
+            if !isGarmentSelected {
+                VStack {
+                    List(garments) { garment in
+                        HStack {
+                            Spacer()
+                            Button {
+                                print("You selected \(garment.title)")
+                                isGarmentSelected = true
+                                selectedGarment = garment
+                            } label: {
+                                BrowseGarmentView(garment: garment)
+                            }
+                            Spacer()
+                        }
+                    }
+                    .navigationTitle("Browse")
+                    .task {
+                        await getAllGarments()
                     }
                 }
-                .navigationTitle("Browse")
-                .task {
-                    await getAllGarments()
-                    
-                }
-            }
-        } else {
-            NavigationView {
-                VStack(alignment: .leading) {
+            } else {
+                VStack {
                     Text(selectedGarment?.title ?? "Oops! Looks like that garment is unavailable.")
                         .font(.headline)
                     Text("$\(selectedGarment!.price)")
@@ -67,8 +70,11 @@ struct BrowseView: View {
                     )
                 }
                 .frame(maxWidth: .infinity)
+                .navigationTitle(selectedGarment!.title)
+                .task {
+                    await getAllGarments()
+                }
             }
-            .navigationTitle(selectedGarment!.title)
         }
     }
     
