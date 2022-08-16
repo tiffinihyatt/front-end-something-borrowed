@@ -22,6 +22,8 @@
 		F953C67E289B681B0004F723 /* ShoppingBagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F953C67D289B681B0004F723 /* ShoppingBagView.swift */; };
 		F95CFA57289B74DC002AB219 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CFA56289B74DC002AB219 /* ImagePicker.swift */; };
 		F999A8EC28AAFD12009E1668 /* BrowseGarmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F999A8EB28AAFD12009E1668 /* BrowseGarmentView.swift */; };
+		F999A8EF28AB278A009E1668 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */; };
+		F999A8F128AB27AB009E1668 /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */; };
 		F99CEDA7289C55FF007A8543 /* GarmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99CEDA6289C55FF007A8543 /* GarmentManager.swift */; };
 		F9A3EF3828AAA2D200BB8E6B /* displayGarment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A3EF3728AAA2D200BB8E6B /* displayGarment.swift */; };
 		F9C22C1C289634C900DFB3FC /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C22C1B289634C900DFB3FC /* ToolbarView.swift */; };
@@ -44,6 +46,9 @@
 		F953C67D289B681B0004F723 /* ShoppingBagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagView.swift; sourceTree = "<group>"; };
 		F95CFA56289B74DC002AB219 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F999A8EB28AAFD12009E1668 /* BrowseGarmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseGarmentView.swift; sourceTree = "<group>"; };
+		F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Regular.ttf"; sourceTree = "<group>"; };
+		F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; };
+		F999A8F228AB28C1009E1668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F99CEDA6289C55FF007A8543 /* GarmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentManager.swift; sourceTree = "<group>"; };
 		F9A3EF3728AAA2D200BB8E6B /* displayGarment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = displayGarment.swift; sourceTree = "<group>"; };
 		F9C22C1B289634C900DFB3FC /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
@@ -95,6 +100,8 @@
 		F950CF172894310B00B73A65 /* something-borrowed */ = {
 			isa = PBXGroup;
 			children = (
+				F999A8F228AB28C1009E1668 /* Info.plist */,
+				F999A8ED28AB2755009E1668 /* Fonts */,
 				F95CFA55289B6CC3002AB219 /* Managers */,
 				F95CFA54289B6CB5002AB219 /* Components */,
 				F950CF182894310B00B73A65 /* something_borrowedApp.swift */,
@@ -153,6 +160,15 @@
 				F9C22C1B289634C900DFB3FC /* ToolbarView.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		F999A8ED28AB2755009E1668 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */,
+				F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +240,8 @@
 				F950CF202894310F00B73A65 /* Preview Assets.xcassets in Resources */,
 				F950CF1D2894310F00B73A65 /* Assets.xcassets in Resources */,
 				2C70B99C94DB1B0E13DAEBAC /* awsconfiguration.json in Resources */,
+				F999A8EF28AB278A009E1668 /* JosefinSans-Regular.ttf in Resources */,
+				F999A8F128AB27AB009E1668 /* CormorantGaramond-Regular.ttf in Resources */,
 				1FB0ACD9A528BBE6173D4A08 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +398,7 @@
 				DEVELOPMENT_TEAM = 5L3YTNCV2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "something-borrowed/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -411,6 +430,7 @@
 				DEVELOPMENT_TEAM = 5L3YTNCV2T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "something-borrowed/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

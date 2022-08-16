@@ -20,13 +20,6 @@ struct BrowseView: View {
         if !isGarmentSelected {
             NavigationView {
                 List(garments) { garment in
-//                    var newGarment = displayGarment(brand: garment.brand, color: garment.color, condition: garment.condition, description: garment.description, id: garment.id, price: garment.price, size: garment.size, title: garment.title, image: UIImage(systemName: "noGarmentImage")!)
-//                    let garmentCompletion = { image in
-//                        newGarment.image = image
-//                    }
-//                    imageManager.downloadImage(garment: newGarment)
-//                    var _: Void = imageManager.downloadImage(garment: newGarment)
-                    
                     Button {
                         print("You selected \(garment.title)")
                         isGarmentSelected = true
@@ -77,8 +70,6 @@ struct BrowseView: View {
             }
             .navigationTitle(selectedGarment!.title)
         }
-//        if not selectedGarment: display all garments
-//        else, call getSingleGarment and display alternative view
     }
     
     func getAllGarments() async {

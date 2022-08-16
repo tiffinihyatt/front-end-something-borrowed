@@ -38,21 +38,5 @@ class ImageManager {
                     print(error)
                 }
             }
-        }
-    
-//    func downloadImage(garmentReference: inout GarmentImage) {
-//        let stringImageKey = String(garmentReference.garmentId)
-//
-//        Amplify.Storage.downloadData(key: stringImageKey) { result in
-//            switch result {
-//            case .success(let data):
-//                print("Successfully downloaded file")
-//                DispatchQueue.main.async {
-//                    garmentReference.image = UIImage(data: data)
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
+    }
 }

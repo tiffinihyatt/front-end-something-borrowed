@@ -14,8 +14,14 @@ import AWSS3StoragePlugin
 struct something_borrowedApp: App {
     
     init() {
-            configureAmplify()
-        }
+        configureAmplify()
+        
+        UIFont.familyNames.forEach({ name in
+            for font_name in UIFont.fontNames(forFamilyName: name) {
+                print("\n\(font_name)")
+            }
+        })
+    }
     
     var body: some Scene {
         WindowGroup {

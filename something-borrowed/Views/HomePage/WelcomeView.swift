@@ -20,33 +20,46 @@ struct WelcomeView: View {
                 }
                 
                 VStack {
+                    Group {
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
+                    }
                     HStack {
                         Image("ring logo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height:45)
                         Text("something borrowed")
-                            .font(.title)
-                            .frame(width: 250)
+                            .font(.custom("Avenir-Heavy", size: 30))
+                            .frame(width: 300)
                     }
                     
-                    Text("gently used wedding attire")
-                        .font(.headline)
-                    Text("for the modern bride")
-                        .font(.headline)
+                    Text("once-loved wedding attire")
+                        .font(.custom("CormorantGaramond-Regular", size: 24))
+                    Text("for the modern nearlywed")
+                        .font(.custom("CormorantGaramond-Regular", size: 24))
                 }
             }
-            Spacer()
-//
-//                VStack {
-//                    Text("Get started below!")
-//                        .font(.title3)
-//                    Image(systemName: "arrow.down")
-//                }
-//            Spacer()
-//            Spacer()
-//            Spacer()
             
+            VStack {
+                Text("Welcome!")
+                    .font(.custom("Avenir-Medium", size: 20))
+                HStack(alignment: .center) {
+                    Text("Select an option below")
+                        .font(.custom("Avenir-Medium", size: 20))
+                    Image(systemName: "arrow.down.circle")
+                }
+            }
+            
+            Spacer()
+        
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
