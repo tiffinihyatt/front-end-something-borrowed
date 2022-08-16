@@ -15,26 +15,33 @@ struct ShoppingBagView: View {
     var body: some View {
         NavigationView {
             List(garmentsInBag) { garment in
+                ShoppingBagDetailView(garment: garment)
+                
+                HStack {
                     VStack(alignment: .leading) {
                         Text(garment.title)
                             .font(.headline)
                         Text("Price: $\(garment.price)")
-                        
-                        HStack {
-                            Button(action: {
-                                Task {
-                                    do {
-                                        try await garmentManager.addToCart(garmentId: garment.id)
-                                        garmentsInBag = try await garmentManager.getShoppingBag()
-                                    } catch {
-                                        print("\(error)")
-                                    }
-                                }
-                            }) {
-                                Image(systemName: "trash.circle.fill")
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        Task {
+                            do {
+                                try await garmentManager.addToCart(garmentId: garment.id)
+                                garmentsInBag = try await garmentManager.getShoppingBag()
+                            } catch {
+                                print("\(error)")
                             }
                         }
+                    }) {
+                        Image(systemName: "trash.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color("darkPeach"))
                     }
+                }
             }
             .navigationTitle("Your Bag")
             .task {
@@ -43,7 +50,6 @@ struct ShoppingBagView: View {
                 } catch {
                     print("\(error)")
                 }
-                
             }
         }
     }

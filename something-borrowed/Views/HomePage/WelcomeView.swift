@@ -14,7 +14,6 @@ struct WelcomeView: View {
                 VStack {
                     Image("tealArch")
                         .resizable()
-//                        .aspectRatio(contentMode: .fit)
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 500)
                 }
