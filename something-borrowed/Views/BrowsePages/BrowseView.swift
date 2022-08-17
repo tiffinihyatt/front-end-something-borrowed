@@ -101,8 +101,8 @@ struct BrowseView: View {
         }
     }
 }
-struct BrowseView_Previews: PreviewProvider {
-    static var previews: some View {
-        BrowseView()
-    }
-}
+//struct BrowseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BrowseView()
+//    }
+//}

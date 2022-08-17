@@ -68,59 +68,63 @@ struct NewGarmentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack(alignment: .bottomTrailing) {
-                    Button(action: {
-                        changeGarmentImage = true
-                        openCameraRoll = true
-                        
-                    }, label: {
-                        if changeGarmentImage {
-                            Image(uiImage: selectedImage)
-                                .resizable()
-                                .frame(width: 210, height: 210, alignment: .center)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
-                        } else {
-                            Image("addListingImage")
-                                .resizable()
-                                .frame(width: 210, height: 210, alignment: .center)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
-                        }
-                })
-                    Image(systemName: "plus")
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .background(.gray)
-                        .clipShape(Circle())
-                }
-                .sheet(isPresented: $openCameraRoll) {
-                    ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
-                }
-                
                 Form {
-                    TextField("Item Name", text: $title)
+                    Section("Listing Image") {
+                        ZStack(alignment: .bottomTrailing) {
+                            Button(action: {
+                                changeGarmentImage = true
+                                openCameraRoll = true
+                                
+                            }, label: {
+                                if changeGarmentImage {
+                                    
+                                    HStack {
+                                        Spacer()
+                                        Image(uiImage: selectedImage)
+                                            .resizable()
+                                            .frame(width: 210, height: 210, alignment: .center)
+                                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                                        Spacer()
+                                    }
+                                } else {
+                                    HStack {
+                                        Image(systemName: "photo.on.rectangle.angled")
+                                        Text("Add listing photo")
+                                    }
+                                }
+                            })
+                        }
+                        .sheet(isPresented: $openCameraRoll) {
+                            ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+                        }
+                    }
+                    
+                    Section("Details") {
+                        TextField("Item Name", text: $title)
 
-                    Picker("Brand", selection: $brand) {
-                        ForEach(brands, id: \.self) {brand in
-                            Text(brand)
+                        Picker("Brand", selection: $brand) {
+                            ForEach(brands, id: \.self) {brand in
+                                Text(brand)
+                            }
                         }
-                    }
-                    
-                    Picker("Color", selection: $color) {
-                        ForEach(colors, id: \.self) {color in
-                            Text(color)
+                        
+                        Picker("Color", selection: $color) {
+                            ForEach(colors, id: \.self) {color in
+                                Text(color)
+                            }
                         }
-                    }
-                    
-                    Picker("Condition", selection: $condition) {
-                        Text("New with tags").tag("New with tags")
-                        Text("Excellent used condition").tag("Excellent used condition")
-                        Text("Good used condition").tag("Good used condition")
-                        Text("Fair used condition").tag("Fair used condition")
-                    }
-                    
-                    Picker("Size", selection: $size) {
-                        ForEach(sizes, id: \.self) {size in
-                            Text(String(size))
+                        
+                        Picker("Condition", selection: $condition) {
+                            Text("New with tags").tag("New with tags")
+                            Text("Excellent used condition").tag("Excellent used condition")
+                            Text("Good used condition").tag("Good used condition")
+                            Text("Fair used condition").tag("Fair used condition")
+                        }
+                        
+                        Picker("Size", selection: $size) {
+                            ForEach(sizes, id: \.self) {size in
+                                Text(String(size))
+                            }
                         }
                     }
                     
@@ -133,24 +137,27 @@ struct NewGarmentView: View {
                     }
                 }
                 
-                Button("List your item!") {
+                Button {
                     Task {
                         try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
                             imageManager.uploadImage(image: selectedImage, imageKey: newGarment!.id)
                     }
+                } label: {
+                    Text("LIST YOUR ITEM")
+                        .foregroundColor(.white)
+                        .font(.custom("Avenir-Medium", size: 21))
                 }
-//                    Add secondary API call to post garment image
+                .padding()
+                .background(
+                    Rectangle()
+                        .fill(Color("darkTeal"))
+                        .frame(width: 300)
+                )
                 .disabled(incompleteForm)
             }
-        
             .navigationTitle("List an Item")
         }
     }
-    
-//    func postGarmentWithImage() async {
-//        let garmentId: () = await garmentManager.postNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-//        let response = await garmentManager.postNewImage(garment_id: garmentId, image: image)
-//    }
 }
 
 struct NewGarmentView_Previews: PreviewProvider {
