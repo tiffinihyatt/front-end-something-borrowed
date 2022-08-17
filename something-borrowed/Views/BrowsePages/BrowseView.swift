@@ -14,6 +14,7 @@ struct BrowseView: View {
     
     @State private var garments = [Garment]()
     @State private var isGarmentSelected: Bool = false
+    @State private var addedToCart: Bool = false
     @State var selectedGarment: Garment?
     
     var body: some View {
@@ -24,7 +25,6 @@ struct BrowseView: View {
                         HStack {
                             Spacer()
                             Button {
-                                print("You selected \(garment.title)")
                                 isGarmentSelected = true
                                 selectedGarment = garment
                             } label: {
