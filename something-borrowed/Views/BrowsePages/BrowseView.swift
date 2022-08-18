@@ -75,7 +75,7 @@ struct BrowseView: View {
     
     func getAllGarments() async {
         do {
-            let url = URL(string: "http://127.0.0.1:5000/garments")!
+            let url = URL(string: "https://backend-something-borrowed.herokuapp.com/garments")!
             let (data, _) = try await URLSession.shared.data(from: url)
             garments = try JSONDecoder().decode([Garment].self, from: data)
         } catch {
