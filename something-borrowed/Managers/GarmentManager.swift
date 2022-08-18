@@ -11,7 +11,7 @@ import Foundation
 class GarmentManager {
 //    get single garment
     func getSingleGarment(garmentId: Int) async throws -> Garment {
-        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garmentId)") else {
+        guard let url = URL(string: "https://backend-something-borrowed.herokuapp.com/garments/\(garmentId)") else {
             fatalError("Missing or incorrect URL")
         }
         
@@ -30,7 +30,7 @@ class GarmentManager {
     
 //    get garments in shopping bag
     func getShoppingBag() async throws -> [Garment] {
-        guard let url = URL(string: "http://127.0.0.1:5000/garments/bag") else {
+        guard let url = URL(string: "https://backend-something-borrowed.herokuapp.com/garments/bag") else {
             fatalError("Missing or incorrect URL")
         }
 
@@ -62,7 +62,7 @@ class GarmentManager {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: body)
         
-        guard let url = URL(string: "http://127.0.0.1:5000/garments") else {
+        guard let url = URL(string: "https://backend-something-borrowed.herokuapp.com/garments") else {
             fatalError("Missing or incorrect URL")
         }
         
@@ -84,7 +84,7 @@ class GarmentManager {
     
 //    add garment to cart
     func addToCart(garmentId: Int) async throws {
-        guard let url = URL(string: "http://127.0.0.1:5000/garments/\(garmentId)") else {
+        guard let url = URL(string: "https://backend-something-borrowed.herokuapp.com/garments/\(garmentId)") else {
             fatalError("Missing or incorrect URL")
         }
         
@@ -96,9 +96,5 @@ class GarmentManager {
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             fatalError("Error adding item to cart")
         }
-        
-//        let decodedData = try JSONDecoder().decode(Garment.self, from: data)
-//
-//        return decodedData
     }
 }
