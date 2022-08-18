@@ -23,6 +23,7 @@
 		F95CFA57289B74DC002AB219 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CFA56289B74DC002AB219 /* ImagePicker.swift */; };
 		F95E763228ADB25C005FB4B9 /* SuccessfullyListedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E763128ADB25C005FB4B9 /* SuccessfullyListedView.swift */; };
 		F95E763528ADC94B005FB4B9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F95E763428ADC94B005FB4B9 /* ConfettiSwiftUI */; };
+		F95E763728ADD79E005FB4B9 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E763628ADD79D005FB4B9 /* LaunchView.swift */; };
 		F999A8EC28AAFD12009E1668 /* BrowseGarmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F999A8EB28AAFD12009E1668 /* BrowseGarmentView.swift */; };
 		F999A8EF28AB278A009E1668 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */; };
 		F999A8F128AB27AB009E1668 /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */; };
@@ -50,6 +51,7 @@
 		F953C67D289B681B0004F723 /* ShoppingBagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingBagView.swift; sourceTree = "<group>"; };
 		F95CFA56289B74DC002AB219 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F95E763128ADB25C005FB4B9 /* SuccessfullyListedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfullyListedView.swift; sourceTree = "<group>"; };
+		F95E763628ADD79D005FB4B9 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		F999A8EB28AAFD12009E1668 /* BrowseGarmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseGarmentView.swift; sourceTree = "<group>"; };
 		F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Regular.ttf"; sourceTree = "<group>"; };
 		F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Regular.ttf"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		F950CF262894600400B73A65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F95E763628ADD79D005FB4B9 /* LaunchView.swift */,
 				F950CF1A2894310B00B73A65 /* ContentView.swift */,
 				F999A8F728AB58F8009E1668 /* BrowsePages */,
 				F999A8F828AB5949009E1668 /* NewGarmentPages */,
@@ -297,6 +300,7 @@
 				F92AEC0B28A98AB600971F54 /* ImageManager.swift in Sources */,
 				F95E763228ADB25C005FB4B9 /* SuccessfullyListedView.swift in Sources */,
 				F95CFA57289B74DC002AB219 /* ImagePicker.swift in Sources */,
+				F95E763728ADD79E005FB4B9 /* LaunchView.swift in Sources */,
 				F999A8F628AB5660009E1668 /* ShoppingBagDetailView.swift in Sources */,
 				F999A8EC28AAFD12009E1668 /* BrowseGarmentView.swift in Sources */,
 				F9C8BE48289A18280006B4E1 /* Garment.swift in Sources */,

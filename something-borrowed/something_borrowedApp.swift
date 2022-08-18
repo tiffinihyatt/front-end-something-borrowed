@@ -19,7 +19,7 @@ struct something_borrowedApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LaunchView()
         }
     }
     
