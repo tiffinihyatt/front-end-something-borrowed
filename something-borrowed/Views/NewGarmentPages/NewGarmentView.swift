@@ -10,6 +10,7 @@ import SwiftUI
 struct NewGarmentView: View {
     @State private var garmentManager = GarmentManager()
     @State private var imageManager = ImageManager()
+    @State private var isItemListed: Bool = false
     
 //    state vars for new garment
     @State private var newGarment: Garment?
@@ -66,97 +67,103 @@ struct NewGarmentView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section("Listing Image") {
-                        ZStack(alignment: .bottomTrailing) {
-                            Button(action: {
-                                changeGarmentImage = true
-                                openCameraRoll = true
-                                
-                            }, label: {
-                                if changeGarmentImage {
+        if !isItemListed {
+            NavigationView {
+                VStack {
+                    Form {
+                        Section("Listing Image") {
+                            ZStack(alignment: .bottomTrailing) {
+                                Button(action: {
+                                    changeGarmentImage = true
+                                    openCameraRoll = true
                                     
-                                    HStack {
-                                        Spacer()
-                                        Image(uiImage: selectedImage)
-                                            .resizable()
-                                            .frame(width: 210, height: 210, alignment: .center)
-                                        .clipShape(RoundedRectangle(cornerRadius: 25))
-                                        Spacer()
+                                }, label: {
+                                    if changeGarmentImage {
+                                        
+                                        HStack {
+                                            Spacer()
+                                            Image(uiImage: selectedImage)
+                                                .resizable()
+                                                .frame(width: 210, height: 210, alignment: .center)
+                                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                                            Spacer()
+                                        }
+                                    } else {
+                                        HStack {
+                                            Image(systemName: "photo.on.rectangle.angled")
+                                            Text("Add listing photo")
+                                        }
                                     }
-                                } else {
-                                    HStack {
-                                        Image(systemName: "photo.on.rectangle.angled")
-                                        Text("Add listing photo")
-                                    }
-                                }
-                            })
+                                })
+                            }
+                            .sheet(isPresented: $openCameraRoll) {
+                                ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
+                            }
                         }
-                        .sheet(isPresented: $openCameraRoll) {
-                            ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
-                        }
-                    }
-                    
-                    Section("Details") {
-                        TextField("Item Name", text: $title)
+                        
+                        Section("Details") {
+                            TextField("Item Name", text: $title)
 
-                        Picker("Brand", selection: $brand) {
-                            ForEach(brands, id: \.self) {brand in
-                                Text(brand)
+                            Picker("Brand", selection: $brand) {
+                                ForEach(brands, id: \.self) {brand in
+                                    Text(brand)
+                                }
+                            }
+                            
+                            Picker("Color", selection: $color) {
+                                ForEach(colors, id: \.self) {color in
+                                    Text(color)
+                                }
+                            }
+                            
+                            Picker("Condition", selection: $condition) {
+                                Text("New with tags").tag("New with tags")
+                                Text("Excellent used condition").tag("Excellent used condition")
+                                Text("Good used condition").tag("Good used condition")
+                                Text("Fair used condition").tag("Fair used condition")
+                            }
+                            
+                            Picker("Size", selection: $size) {
+                                ForEach(sizes, id: \.self) {size in
+                                    Text(String(size))
+                                }
                             }
                         }
                         
-                        Picker("Color", selection: $color) {
-                            ForEach(colors, id: \.self) {color in
-                                Text(color)
-                            }
+                        Section("Item Description") {
+                            TextField("Tell us about your item!", text: $description)
                         }
                         
-                        Picker("Condition", selection: $condition) {
-                            Text("New with tags").tag("New with tags")
-                            Text("Excellent used condition").tag("Excellent used condition")
-                            Text("Good used condition").tag("Good used condition")
-                            Text("Fair used condition").tag("Fair used condition")
-                        }
-                        
-                        Picker("Size", selection: $size) {
-                            ForEach(sizes, id: \.self) {size in
-                                Text(String(size))
-                            }
+                        Section("Price") {
+                            TextField("Price", text: $price)
                         }
                     }
                     
-                    Section("Item Description") {
-                        TextField("Tell us about your item!", text: $description)
+                    Button {
+                        Task {
+                            try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
+                                imageManager.uploadImage(image: selectedImage, imageKey: newGarment!.id)
+                            isItemListed = true
+                        }
+                    } label: {
+                        Text("LIST YOUR ITEM")
+                            .foregroundColor(.white)
+                            .font(.custom("Avenir-Medium", size: 21))
                     }
-                    
-                    Section("Price") {
-                        TextField("Price", text: $price)
-                    }
+                    .padding()
+                    .background(
+                        Rectangle()
+                            .fill(Color("darkTeal"))
+                            .frame(width: 300)
+                    )
+                    .disabled(incompleteForm)
                 }
-                
-                Button {
-                    Task {
-                        try await newGarment = garmentManager.addNewGarment(title: title, brand: brand, size: size, color: color, condition: condition, price: price, description: description)
-                            imageManager.uploadImage(image: selectedImage, imageKey: newGarment!.id)
-                    }
-                } label: {
-                    Text("LIST YOUR ITEM")
-                        .foregroundColor(.white)
-                        .font(.custom("Avenir-Medium", size: 21))
-                }
-                .padding()
-                .background(
-                    Rectangle()
-                        .fill(Color("darkTeal"))
-                        .frame(width: 300)
-                )
-                .disabled(incompleteForm)
+                .navigationTitle("List an Item")
             }
-            .navigationTitle("List an Item")
+        } else {
+            SuccessfullyListedView()
         }
+        
     }
 }
 

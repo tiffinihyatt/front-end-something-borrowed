@@ -8,98 +8,71 @@
 import SwiftUI
 
 struct SuccessfullyListedView: View {
+    
+    @State var keepShopping: Bool = false
+    
     var body: some View {
-        VStack {
-            ZStack {
-                VStack {
-                    Image("tealArch")
-                        .resizable()
-                        .edgesIgnoringSafeArea(.top)
-                        .frame(height: 500)
-                }
-                
-                VStack {
-                    Group {
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                        Text("")
-                    }
-                    
-                    Group {
-                        Text("🎉 Cue the confetti!")
-                        Text("")
-                        Text("Your item has been listed.")
-                    }
-                    .font(.custom("Avenir-Heavy", size: 28))
-                    .frame(width: 400)
-                    
-//                    NavigationLink(destination: BrowseView()) {
-//                        Text("KEEP SHOPPING")
-//                            .foregroundColor(.white)
-//                            .font(.custom("Avenir-Medium", size: 21))
-//                    }
-//                    .padding()
-//                    .background(
-//                        Rectangle()
-//                            .fill(Color("darkTeal"))
-//                            .frame(width: 300)
-//                    )
-//
-//                    NavigationLink(destination: ShoppingBagView()) {
-//                        Text("VIEW SHOPPING BAG")
-//                            .foregroundColor(.white)
-//                            .font(.custom("Avenir-Medium", size: 21))
-//                    }
-//                    .padding()
-//                    .background(
-//                        Rectangle()
-//                            .fill(Color("darkTeal"))
-//                            .frame(width: 300)
-//                    )
-                }
-            }
+        
+        if keepShopping {
+            BrowseView()
+        } else {
             
             VStack {
-                Spacer()
-                
-                NavigationLink(destination: BrowseView()) {
-                    Text("KEEP SHOPPING")
-                        .foregroundColor(.white)
-                        .font(.custom("Avenir-Medium", size: 21))
+                ZStack {
+                    VStack {
+                        Image("tealArch")
+                            .resizable()
+                            .edgesIgnoringSafeArea(.top)
+                            .frame(height: 500)
+                    }
+                    
+                    VStack {
+                        Group {
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                            Text("")
+                        }
+                        
+                        Group {
+                            Text("🎉 Cue the confetti!")
+                            Text("")
+                            Text("Your item has been listed.")
+                        }
+                        .font(.custom("Avenir-Heavy", size: 28))
+                        .frame(width: 400)
+                    }
                 }
-                .padding()
-                .background(
-                    Rectangle()
-                        .fill(Color("darkTeal"))
-                        .frame(width: 300)
-                )
                 
-                NavigationLink(destination: ShoppingBagView()) {
-                    Text("VIEW SHOPPING BAG")
-                        .foregroundColor(.white)
-                        .font(.custom("Avenir-Medium", size: 21))
+                VStack {
+                    Spacer()
+                    
+                    Button {
+                        keepShopping = true
+                    } label: {
+                        Text("KEEP SHOPPING")
+                            .foregroundColor(.white)
+                            .font(.custom("Avenir-Medium", size: 21))
+                    }
+                    .padding()
+                    .background(
+                        Rectangle()
+                            .fill(Color("darkTeal"))
+                            .frame(width: 300)
+                    )
+                    
+                    Spacer()
+                    Spacer()
                 }
-                .padding()
-                .background(
-                    Rectangle()
-                        .fill(Color("darkTeal"))
-                        .frame(width: 300)
-                )
                 
-                Spacer()
                 Spacer()
             }
-            
-            Spacer()
         }
-        .frame(width: .infinity, height: .infinity)
-//        .background(Color("darkTeal"))
     }
 }
 
