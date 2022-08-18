@@ -56,6 +56,7 @@ struct NewGarmentView: View {
         "Jenny Yoo",
         "Leanne Marshall",
         "Monique Lhuillier",
+        "Other",
         "Pantora Bridal",
         "Reem Acra",
         "Ronny Kobo",
