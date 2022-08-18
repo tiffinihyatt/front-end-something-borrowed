@@ -22,6 +22,7 @@
 		F953C67E289B681B0004F723 /* ShoppingBagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F953C67D289B681B0004F723 /* ShoppingBagView.swift */; };
 		F95CFA57289B74DC002AB219 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95CFA56289B74DC002AB219 /* ImagePicker.swift */; };
 		F95E763228ADB25C005FB4B9 /* SuccessfullyListedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95E763128ADB25C005FB4B9 /* SuccessfullyListedView.swift */; };
+		F95E763528ADC94B005FB4B9 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F95E763428ADC94B005FB4B9 /* ConfettiSwiftUI */; };
 		F999A8EC28AAFD12009E1668 /* BrowseGarmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F999A8EB28AAFD12009E1668 /* BrowseGarmentView.swift */; };
 		F999A8EF28AB278A009E1668 /* JosefinSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8EE28AB278A009E1668 /* JosefinSans-Regular.ttf */; };
 		F999A8F128AB27AB009E1668 /* CormorantGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F999A8F028AB27AB009E1668 /* CormorantGaramond-Regular.ttf */; };
@@ -70,6 +71,7 @@
 			files = (
 				F92AEC0728A80D7C00971F54 /* Amplify in Frameworks */,
 				F92AEC0328A80D7C00971F54 /* AWSCognitoAuthPlugin in Frameworks */,
+				F95E763528ADC94B005FB4B9 /* ConfettiSwiftUI in Frameworks */,
 				F92AEC0528A80D7C00971F54 /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +226,7 @@
 				F92AEC0228A80D7C00971F54 /* AWSCognitoAuthPlugin */,
 				F92AEC0428A80D7C00971F54 /* AWSS3StoragePlugin */,
 				F92AEC0628A80D7C00971F54 /* Amplify */,
+				F95E763428ADC94B005FB4B9 /* ConfettiSwiftUI */,
 			);
 			productName = "something-borrowed";
 			productReference = F950CF152894310B00B73A65 /* something-borrowed.app */;
@@ -255,6 +258,7 @@
 			mainGroup = F950CF0C2894310B00B73A65;
 			packageReferences = (
 				F92AEC0128A80D7C00971F54 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				F95E763328ADC94B005FB4B9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = F950CF162894310B00B73A65 /* Products */;
 			projectDirPath = "";
@@ -519,6 +523,14 @@
 				kind = branch;
 			};
 		};
+		F95E763328ADC94B005FB4B9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -536,6 +548,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F92AEC0128A80D7C00971F54 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
+		};
+		F95E763428ADC94B005FB4B9 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F95E763328ADC94B005FB4B9 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

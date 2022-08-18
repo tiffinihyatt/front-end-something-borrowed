@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct SuccessfullyListedView: View {
     
     @State var keepShopping: Bool = false
+    @State private var counter: Int = 0
     
     var body: some View {
         
@@ -72,6 +74,10 @@ struct SuccessfullyListedView: View {
                 
                 Spacer()
             }
+            .onAppear(perform: {
+                counter += 1
+            })
+            .confettiCannon(counter: $counter, num: 75, rainHeight: 375.0, radius: 500)
         }
     }
 }
